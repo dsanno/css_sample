@@ -1,0 +1,21 @@
+<% _.each(cssTable, function(item) { %>
+<div class="item">
+	<div class="label"><%= item.name %></div>
+	<div>
+		<input type="radio" name="<%= item.name %>" checked>none
+	</div>
+	<div>
+		<input type="radio" name="<%= item.name %>">
+		<select>
+			<% _.each(item.values, function(value) { %>
+				<option><%= value %></option>
+			<% }); %>
+		</select>
+	</div>
+	<div>
+		<input type="radio" name="<%= item.name %>">
+		<input type="text">
+	</div>
+	<input type="hidden" name="<%= item.name %>" value="<%= item.prefix?'true':'false' %>">
+</div>
+<% }); %>

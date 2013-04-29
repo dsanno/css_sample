@@ -1,0 +1,11 @@
+div.item {
+	width: 300px;
+}
+
+.label {
+	background-color: #ffcc99;
+}
+
+.item div {
+	padding: 2px;
+}
