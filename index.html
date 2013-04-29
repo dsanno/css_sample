@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
 <head>
+	<meta charset="UTF-8">
 	<title>CSS sample</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="lib/jquery-2.0.0.js"></script>
@@ -10,11 +10,41 @@
 	<script src="lib/view.js"></script>
 	<script src="js/table.js"></script>
 	<script src="js/css.js"></script>
+	<script id="template" type="text/x-template">
+		<% _.each(cssTable, function(item) { %>
+		<div class="item">
+			<div class="label"><%= item.name %></div>
+			<div>
+				<input type="radio" name="<%= item.name %>" value="none" checked>none
+			</div>
+			<% if (item.values) { %>
+			<div>
+				<input type="radio" name="<%= item.name %>" value="select">
+				<select>
+					<% _.each(item.values, function(value) { %>
+						<option><%= value %></option>
+					<% }); %>
+				</select>
+			</div>
+			<% } %>
+			<% if (item.types) { %>
+			<div>
+				<input type="radio" name="<%= item.name %>" value="text">
+				<input type="text">(<%= item.types.join(',') %>)
+			</div>
+			<% } %>
+			<input type="hidden" name="<%= item.name %>" value="<%= item.prefix?'true':'false' %>">
+		</div>
+		<% }); %>
+	</script>
 </head>
 <body>
 <h1>CSS Sample</h1>
-<div>
-	<div id="target">This is target.</div>
+<div class="preview">
+<div id="target">
+　私（わたくし）はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚（はば）かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執（と）っても心持は同じ事である。よそよそしい頭文字（かしらもじ）などはとても使う気にならない。<br>
+　私が先生と知り合いになったのは鎌倉（かまくら）である。その時私はまだ若々しい書生であった。暑中休暇を利用して海水浴に行った友達からぜひ来いという端書（はがき）を受け取ったので、私は多少の金を工面（くめん）して、出掛ける事にした。私は金の工面に二（に）、三日（さんち）を費やした。ところが私が鎌倉に着いて三日と経（た）たないうちに、私を呼び寄せた友達は、急に国元から帰れという電報を受け取った。電報には母が病気だからと断ってあったけれども友達はそれを信じなかった。友達はかねてから国元にいる親たちに勧（すす）まない結婚を強（し）いられていた。彼は現代の習慣からいうと結婚するにはあまり年が若過ぎた。それに肝心（かんじん）の当人が気に入らなかった。それで夏休みに当然帰るべきところを、わざと避けて東京の近くで遊んでいたのである。彼は電報を私に見せてどうしようと相談をした。私にはどうしていいか分らなかった。けれども実際彼の母が病気であるとすれば彼は固（もと）より帰るべきはずであった。それで彼はとうとう帰る事になった。せっかく来た私は一人取り残された。<br>
+</div>
 </div>
 <div id="list"></div>
 </body>

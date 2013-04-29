@@ -15,31 +15,31 @@
         }
     };
     $(function() {
-        var target = $('#target');
         var data = {
             cssTable: CS.table
         };
         var html = new EJS({
-            url: 'ejs/sample.ejs'
+            text: $('#template').text()
         }).render(data);
         $('#list').html(html);
         $('input[type=radio]').each(function() {
             var self = $(this);
+            var prefix = Boolean($('input[type="hidden"][name=' + self.attr('name') + ']').val());
             self.parent().find('select,input[type!="radio"]').on('change', function() {
-                self.attr({
-                    checked: 'checked'
-                });
-                target.css(self.attr('name'), $(this).val());
+                $('input[type=radio][name=' + self.attr('name') + ']').val([self.val()]);
+                var target = $('#target');
+                css(target, self.attr('name'), $(this).val(), prefix);
             });
         });
         $('input[type=radio]').on('change', function() {
             var self = $(this);
+            var target = $('#target');
             var element = self.parent().find('select,input[type!="radio"]');
-            var prefix = ('input[type="hidden"][name=' + self.attr('name') + ']');
+            var prefix = Boolean($('input[type="hidden"][name=' + self.attr('name') + ']').val());
             if (element.length > 0) {
                 css(target, self.attr('name'), element.val(), prefix);
             } else {
-                css(target, self.attr('name'), null, prefix);
+                css(target, self.attr('name'), '', prefix);
             }
         });
     });
