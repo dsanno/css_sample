@@ -1,12 +1,14 @@
 (function() {
     'user strict';
     /**
+     * set css
+     * 
      * @param {object} element jQuery element.
      * @param {string} name CSS name.
      * @param {string} value CSS value.
      * @param {boolean} [prefix=false] true if prefix is necessary, false otherwise.
      */
-    var css = function(element, name, value, prefix) {
+    var setCss = function(element, name, value, prefix) {
         element.css(name, value);
         if (prefix === true) {
             element.css('-webkit-' + name, value);
@@ -28,7 +30,7 @@
             self.parent().find('select,input[type!="radio"]').on('change', function() {
                 $('input[type=radio][name=' + self.attr('name') + ']').val([self.val()]);
                 var target = $('#target');
-                css(target, self.attr('name'), $(this).val(), prefix);
+                setCss(target, self.attr('name'), $(this).val(), prefix);
             });
         });
         $('input[type=radio]').on('change', function() {
@@ -37,9 +39,9 @@
             var element = self.parent().find('select,input[type!="radio"]');
             var prefix = Boolean($('input[type="hidden"][name=' + self.attr('name') + ']').val());
             if (element.length > 0) {
-                css(target, self.attr('name'), element.val(), prefix);
+                setCss(target, self.attr('name'), element.val(), prefix);
             } else {
-                css(target, self.attr('name'), '', prefix);
+                setCss(target, self.attr('name'), '', prefix);
             }
         });
     });

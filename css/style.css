@@ -14,9 +14,24 @@
 }
 
 div.item {
+	background-color: #ffffcc;
 	width: 300px;
 }
 
 .item div {
 	padding: 2px;
+}
+
+.box {
+	display: inline-block;
+	box-sizing: content-border;
+	vertical-align: top;
+	margin: 0px;
+	padding: 0px;
+	width: 400px;
+	height: 400px;
+}
+
+.frame {
+	border: 1px solid #999999;
 }

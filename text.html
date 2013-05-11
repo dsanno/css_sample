@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSS sample</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="lib/jquery-2.0.0.js"></script>
+	<script src="lib/underscore.js"></script>
+	<script src="lib/ejs.js"></script>
+	<script src="lib/view.js"></script>
+	<script src="js/table.js"></script>
+	<script src="js/css.js"></script>
+	<script id="template" type="text/x-template">
+		<% _.each(cssTable, function(item) { %>
+		<div class="item">
+			<div class="label"><%= item.name %></div>
+			<div>
+				<input type="radio" name="<%= item.name %>" value="none" checked>none
+			</div>
+			<% if (item.values) { %>
+			<div>
+				<input type="radio" name="<%= item.name %>" value="select">
+				<select>
+					<% _.each(item.values, function(value) { %>
+						<option><%= value %></option>
+					<% }); %>
+				</select>
+			</div>
+			<% } %>
+			<% if (item.types) { %>
+			<div>
+				<input type="radio" name="<%= item.name %>" value="text">
+				<input type="text">(<%= item.types.join(',') %>)
+			</div>
+			<% } %>
+			<input type="hidden" name="<%= item.name %>" value="<%= item.prefix?'true':'false' %>">
+		</div>
+		<% }); %>
+	</script>
+</head>
+<body>
+<h1>CSS Sample</h1>
+<div class="preview">
+<div id="target">
+ 私（わたくし）はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚（はば）かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執（と）っても心持は同じ事である。よそよそしい頭文字（かしらもじ）などはとても使う気にならない。<br>
+ Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?'<br></div>
+</div>
+<div id="list"></div>
+</body>
+</html>

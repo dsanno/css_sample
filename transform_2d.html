@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>2D トランスフォーム</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="lib/jquery-2.0.0.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/transform2d.js"></script>
+</head>
+<body>
+	<div id="left" class="box frame">私（わたくし）はその人を常に先生と呼んでいた。だからここでもただ先生と書くだけで本名は打ち明けない。これは世間を憚（はば）かる遠慮というよりも、その方が私にとって自然だからである。私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。筆を執（と）っても心持は同じ事である。よそよそしい頭文字（かしらもじ）などはとても使う気にならない。</div>
+	<div id="right" class="box"><img src="img/hello.png"></div>
+	<div>
+		<div>
+		<label for="transformLeft">left transform</label>
+		<input id="transformLeft" type="text" size=100>
+		</div>
+		<div>
+		<label for="originLeft">left origin</label>
+		<input id="originLeft" type="text" size=100>
+		</div>
+		<div>
+		<div>
+		<label for="transformRight">right transform</label>
+		<input id="transformRight" type="text" size=100>
+		</div>
+		<label for="originRight">right origin</label>
+		<input id="originRight" type="text" size=100>
+		</div>
+	</div>
+	<div>
+		Examples:<br>
+		translate(10px, 20px) translateX(10px) translateY(20px)<br>
+		scale(0.5, 2.0) scaleX(0.5) scaleY(2.0)<br>
+		rotate(30deg)<br>
+		skew(20deg, 30deg) skewX(20deg) skewY(30deg)<br>
+	</div>
+	<div id="css" class="frame">
+	</div>
+</body>
+</html>
